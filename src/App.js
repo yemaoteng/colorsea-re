@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
+import AddColorForm from './Component/AddColorForm'
+import ColorList from './Component/ColorList'
 import {v4} from 'uuid'
 
 
 export class App extends Component {
     constructor(props) {
-      super(props)
-      this.state = {
-         colors: []
-      }
-
+        super(props)
+        this.state = {
+            colors: []
+        }
+        this.addColor = this.addColor.bind(this)
+        this.rateColor = this.rateColor.bind(this)
+        this.removeColor = this.removeColor.bind(this)
     }
 
     addColor(title,color,rating) {
@@ -22,6 +26,9 @@ export class App extends Component {
             }
         ]
         this.setState({colors})
+        setTimeout(() => {
+            console.log(this.state.colors)
+        }, 100)
     }
 
     rateColor(id,rating) {
@@ -39,9 +46,12 @@ export class App extends Component {
     }
 
     render() {
+        const {addColor,rateColor,removeColor} = this
+        const colors = this.state.colors
         return (
         <div>
-            
+            <AddColorForm onNewColor={addColor} />
+            <ColorList colors={colors} onRate={rateColor} onRemove={removeColor} />
         </div>
         )
     }
