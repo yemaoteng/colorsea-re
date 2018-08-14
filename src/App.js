@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import AddColorForm from './Component/AddColorForm'
-import ColorList from './Component/ColorList'
+import AddColorForm from './components/AddColorForm'
+import ColorList from './components/ColorList'
 import {v4} from 'uuid'
 
 
