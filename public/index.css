@@ -19,3 +19,20 @@ body {
   width: 100px;
   height: 50px;
 }
+
+.star {
+  float: left;
+  width:25px;
+  height: 25px;
+  margin-right: 5px;
+  background-color: grey;
+  clip-path: (
+    0% 0%,
+    70% 0%,
+    100% 100%,
+    0% 100%
+  )
+}
+.selected {
+  background-color: orangered;
+}

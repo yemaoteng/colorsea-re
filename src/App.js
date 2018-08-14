@@ -4,7 +4,7 @@ import ColorList from './Component/ColorList'
 import {v4} from 'uuid'
 
 
-export class App extends Component {
+class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,14 +15,14 @@ export class App extends Component {
         this.removeColor = this.removeColor.bind(this)
     }
 
-    addColor(title,color,rating) {
+    addColor(title,color) {
         const colors = [
             ...this.state.colors,
             {
                 id: v4(),
                 title,
                 color,
-                rating
+                rating:0
             }
         ]
         this.setState({colors})
@@ -33,16 +33,17 @@ export class App extends Component {
 
     rateColor(id,rating) {
         const colors = this.state.colors.map((color)=>
-            (color.id!==id) ? color : {...color,rating}
+            (color.id!==id) ? color : ({...color,rating})
         )
         this.setState({colors})
     }
     
     removeColor(id) {
-        const colors = this.state.colors.filter((color)=>
-            color.id!==id
-        )
+        const colors = this.state.colors.filter((color) => color.id!==id )
         this.setState({colors})
+        setTimeout(() => {
+            console.log(this.state.colors)
+        }, 100)
     }
 
     render() {
